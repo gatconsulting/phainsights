@@ -675,10 +675,10 @@
 			d3.select('body').append('div')
 	        .classed('animated', true)
 	        .classed('fadeInOpac', true)
-	        .classed('tool', true)
+	        .classed('toolM', true)
 	        .attr('id', 'hoverbox');
 	      // tooltip selection
-	      var tooltip = d3.select('.tool');
+	      var tooltip = d3.select('.toolM');
 
 	      tooltip.append('div')
 	      .classed('toolhead', true)
@@ -720,7 +720,7 @@
 	      tooltip.style('top', position.y + 'px');
 
 		}else{
-			var tooltip = d3.select('.tool');
+			var tooltip = d3.select('.toolM');
 
 			var tooltipRect = tooltip.node().getBoundingClientRect();
 
@@ -736,7 +736,7 @@
 	}
 
 	function moveTooltip(){
-		var tooltip = d3.select('.tool');
+		var tooltip = d3.select('.toolM');
 
 		if(!tooltip.node()){
 			return;
