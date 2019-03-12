@@ -591,10 +591,10 @@
       d3.select('body').append('div')
         .classed('animated', true)
         .classed('fadeInOpac', true)
-        .classed('tool', true)
+        .classed('toolTS', true)
         .attr('id', 'hoverbox')
       // tooltip selection
-      var tooltip = d3.select('.tool');
+      var tooltip = d3.select('.toolTS');
 
       tooltip.append('div')
       .classed('toolhead', true)
@@ -658,6 +658,6 @@
         .style('opacity', 0.10);
 
       // remove tooltip
-      d3.selectAll('.tool').remove()
+      d3.selectAll('.toolTS').remove()
     })
   }
