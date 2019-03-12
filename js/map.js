@@ -68,7 +68,7 @@
 
 			var data = dataArr[day];
 
-			var hover = document.getElementById('hoverbox');
+			var hover = document.getElementById('hoverboxM');
 			if(hover){
 				hover.remove();
 			}
@@ -127,7 +127,7 @@
 					.on('mouseout', function(d){
 						//player.showToolTip();
 					//	console.log(player.day);
-						var hover = document.getElementById('hoverbox');
+						var hover = document.getElementById('hoverboxM');
 						if(hover){
 							hover.remove();
 						}
@@ -671,12 +671,12 @@
 
 		pauseAllWAAPI(document.querySelectorAll('.map-container circle'));
 
-		if(!document.getElementById('hoverbox')){
+		if(!document.getElementById('hoverboxM')){
 			d3.select('body').append('div')
 	        .classed('animated', true)
 	        .classed('fadeInOpac', true)
 	        .classed('toolM', true)
-	        .attr('id', 'hoverbox');
+	        .attr('id', 'hoverboxM');
 	      // tooltip selection
 	      var tooltip = d3.select('.toolM');
 
