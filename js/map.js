@@ -542,7 +542,7 @@
 
 	var player;
 
-	d3.csv("../avgGPSdata.csv", function(data) {
+	d3.csv("avgGPSdata.csv", function(data) {
 		newData = {};
 		for(var i=0; i < data.length; i++){
 			var row = data[i];
