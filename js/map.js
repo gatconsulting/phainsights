@@ -68,7 +68,7 @@
 
 			var data = dataArr[day];
 
-			var hover = document.getElementById('hoverboxM');
+			var hover = document.getElementById('map-hoverbox');
 			if(hover){
 				hover.remove();
 			}
@@ -127,7 +127,7 @@
 					.on('mouseout', function(d){
 						//player.showToolTip();
 					//	console.log(player.day);
-						var hover = document.getElementById('hoverboxM');
+						var hover = document.getElementById('map-hoverbox');
 						if(hover){
 							hover.remove();
 						}
@@ -481,8 +481,13 @@
 		}catch(e){
 		//	console.log(zone);
 		}
-		var lat = parseFloat(circleCenter[0]) + (Math.random()> 0.5 ? Math.random() * 0.005: Math.random() * 0.005 * -1);
-		var lng = parseFloat(circleCenter[1] + (Math.random()> 0.5 ? Math.random() * 0.005: Math.random() * 0.005 * -1));
+		try{
+			var lat = parseFloat(circleCenter[0]) + (Math.random()> 0.5 ? Math.random() * 0.005: Math.random() * 0.005 * -1);
+			var lng = parseFloat(circleCenter[1] + (Math.random()> 0.5 ? Math.random() * 0.005: Math.random() * 0.005 * -1));		
+		}catch(e){
+			console.log(row, circleCenter);
+		}
+		
 		return L.latLng(lat,lng);
 	}
 
@@ -530,14 +535,14 @@
 			return 20;
 		}
 
-		var scale = d3.scaleSqrt().domain([0,1023]).range([0,100]);
+		var scale = d3.scaleSqrt().domain([0,1023]).range([0,30]);
 		var rescaleFactor = originalMMP/getMetresPerPixel();
 		return scale(row['Surveyed'] - row['Awaiting']) * rescaleFactor//scale(row['Surveyed'] - row['Awaiting']);
 	}
 
 	var player;
 
-	d3.csv("avg_gps_data.csv", function(data) {
+	d3.csv("../avg_gps_data.csv", function(data) {
 		newData = {};
 		for(var i=0; i < data.length; i++){
 			var row = data[i];
@@ -671,14 +676,14 @@
 
 		pauseAllWAAPI(document.querySelectorAll('.map-container circle'));
 
-		if(!document.getElementById('hoverboxM')){
+		if(!document.getElementById('map-hoverbox')){
 			d3.select('body').append('div')
 	        .classed('animated', true)
 	        .classed('fadeInOpac', true)
-	        .classed('toolM', true)
-	        .attr('id', 'hoverboxM');
+	        .classed('tool', true)
+	        .attr('id', 'map-hoverbox');
 	      // tooltip selection
-	      var tooltip = d3.select('.toolM');
+	      var tooltip = d3.select('.tool');
 
 	      tooltip.append('div')
 	      .classed('toolhead', true)
@@ -704,7 +709,7 @@
 	      tooltip.append('div')
 	      .classed('attendanceValue', true)
 	      .html(function(){
-	        return '<div class="attendanceValues lato" id="present"><span class="attendanceHead">Present: </span><span>' + (parseInt(data['Present without Uniform']) + parseInt(data['Present'])) + '</span></div><div class="attendanceValues lato" id="absent"><span class="attendanceHead">Absent: </span><span>' + data['Valid Absent'] + '</span></div>' //+ ' vs ' + d.results[1].party + " ("+d.PrimaryDistrict+ " "+ d.seat +")";
+	        return '<div class="attendanceValues lato" id="present"><span class="attendanceHead">Present: </span><span>' + parseInt(data['Present']) + '</span></div><div class="attendanceValues lato" id="absent"><span class="attendanceHead">Absent: </span><span>' + data['Valid Absent'] + '</span></div>' //+ ' vs ' + d.results[1].party + " ("+d.PrimaryDistrict+ " "+ d.seat +")";
 	      });
 
 	      var radius = 2 * getRadius(data);
@@ -720,7 +725,7 @@
 	      tooltip.style('top', position.y + 'px');
 
 		}else{
-			var tooltip = d3.select('.toolM');
+			var tooltip = d3.select('.tool');
 
 			var tooltipRect = tooltip.node().getBoundingClientRect();
 
@@ -736,7 +741,7 @@
 	}
 
 	function moveTooltip(){
-		var tooltip = d3.select('.toolM');
+		var tooltip = d3.select('.tool');
 
 		if(!tooltip.node()){
 			return;

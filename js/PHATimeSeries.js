@@ -244,13 +244,15 @@
               .style('stroke-opacity', 0.35)
               .classed('trendlineAbs', true);
 
+      testVoronoi = voronoi.polygons(pha);
+      console.log(voronoi.polygons(pha));
       // append voronoi cells for interaction
       var polygon = chart_g.append("g")
                           .attr("class", "polygons")
                           .selectAll("path")
                           .data(voronoi.polygons(pha))
                           .enter().append("path")
-                          .attr("class", d => "T" + d.data.Date)
+                          .attr("class", function(d, i){if(!d){x123 = this;console.log(this.hasOwnProperty('__data__'),i);return 'a123';} return "T" + d.data.Date})
                           .classed("voronoiPath", true)
                           .call(redrawPolygon);
 
@@ -545,7 +547,7 @@
                       .selectAll("path")
                       .data(voronoi.polygons(phaData))
                       .enter().append("path")
-                      .attr("class", d => "T" + d.data.Date)
+                      .attr("class", d => !d ? 'abc123' : "T" + d.data.Date)
                       .classed("voronoiPath", true)
                       .call(redrawPolygon);
 
@@ -644,6 +646,8 @@
         tooltip.style('left', d3.event.pageX - 260 + "px");
       }
     })
+
+
 
     d3.selectAll(".voronoiPath").on("mouseout", function(d, i){
       // class name contains date, get the date

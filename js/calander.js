@@ -28,10 +28,17 @@ function transformData(data, enumName, action, shift){
   return dateCount;
 }
 
+
+d3.csv('./surveySummary19.csv', function(d) {
+  console.log(d);
+
+});
+
+
 //List of enumerators actions and shifts
-var enumNames = ["Abdul Islam","ABDUL LATIF","AHMAD ALI","ALLAUD DIN SIDDIQUI","Dilawar Hussain",
-"Dilawer Ayoub","JUNAID ASLAM RANA","M SIDDIQUE","M ZULFIQAR","M.ARSHAD","Muhammad Arslan","Muhammad Azhar",
-"Muhammad Hussain","Muhammad Rashid","Muhammad Suleman","Tanveer Ahsan","Tanveer Hussain","Zubair Khan"];
+var enumNames = ["Abdul Islam","ABDUL LATIF","AHMAD ALI", "M.  Nazim","M. Bilal", "Muhammad Azhar", "Abid Mehmood", "ALLAUD DIN SIDDIQUI","Dilawar Hussain",
+"Dilawer Ayoub","JUNAID ASLAM RANA","M SIDDIQUE", "M.  Azam", "M ZULFIQAR","M.ARSHAD","Muhammad Arslan","Muhammad Azhar", "NOUMAN",
+"Muhammad Hussain","Muhammad Rashid","Muhammad Suleman","Tanveer Ahsan","Tanveer Hussain", "Noor Ahmad", "Zubair Khan"];
 var actions = ["attendance","survey" ];
 var shifts = ["Morning","Evening","Night"];
 
@@ -63,7 +70,7 @@ function drawCalendar(dateData, parentSelection, type){
 
 
   var minDate = new Date(2017, 06, 01);
-  var maxDate = new Date(2018, 08, 01);
+  var maxDate = new Date(2019, 04, 01);
 
   var cellMargin = 1,
       cellSize = 15;
