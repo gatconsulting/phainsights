@@ -483,11 +483,11 @@
 		}
 		try{
 			var lat = parseFloat(circleCenter[0]) + (Math.random()> 0.5 ? Math.random() * 0.005: Math.random() * 0.005 * -1);
-			var lng = parseFloat(circleCenter[1] + (Math.random()> 0.5 ? Math.random() * 0.005: Math.random() * 0.005 * -1));		
+			var lng = parseFloat(circleCenter[1] + (Math.random()> 0.5 ? Math.random() * 0.005: Math.random() * 0.005 * -1));
 		}catch(e){
 			console.log(row, circleCenter);
 		}
-		
+
 		return L.latLng(lat,lng);
 	}
 
@@ -542,7 +542,7 @@
 
 	var player;
 
-	d3.csv("../avg_gps_data.csv", function(data) {
+	d3.csv("../avgGPSdata.csv", function(data) {
 		newData = {};
 		for(var i=0; i < data.length; i++){
 			var row = data[i];
