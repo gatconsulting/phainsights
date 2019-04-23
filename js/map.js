@@ -485,7 +485,6 @@
 			var lat = parseFloat(circleCenter[0]) + (Math.random()> 0.5 ? Math.random() * 0.005: Math.random() * 0.005 * -1);
 			var lng = parseFloat(circleCenter[1] + (Math.random()> 0.5 ? Math.random() * 0.005: Math.random() * 0.005 * -1));
 		}catch(e){
-			console.log(row, circleCenter);
 		}
 
 		return L.latLng(lat,lng);
