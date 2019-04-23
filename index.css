@@ -803,7 +803,7 @@ html, body {
   }
 }
 
-.tool, .toolM {
+.tool {
   position: absolute;
   background: white;
   color: #212121;

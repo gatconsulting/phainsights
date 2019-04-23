@@ -251,12 +251,15 @@
     <div id="sideBut" class="footerPurple footerButts"></div>
     <div id="bottomBut" class="footerPurple footerButts"></div>
    </footer>
-
     <script src="./datepicker/datepicker.js"></script>
 
     <script src="./index.js"></script>
 
-    <script src="js/pha_data.js"></script>
+    <script src="http://122.129.77.114:8000/storage/pha_data.js"></script>
+    <script type="text/javascript">
+      window.dateGlobal = phaDataDash[phaDataDash.length - 1].Date;
+    </script>
+    <!--<script src="js/pha_data.js"></script>-->
     <script src="js/PHATimeSeries.js"></script>
     <script src="js/imagesloaded.pkgd.min.js"></script>
     <script src="js/three.min.js"></script>
@@ -274,18 +277,18 @@
       $('[data-toggle="datepicker"]').datepicker();
 
       var startDate = '01-Jun-17';
-      var endDate = "31-Aug-18";
+      var endDate = dateGlobal;
       var phaZone = "I";
 
       makeChart(phaMasterData, phaZone, [startDate, endDate]);
 
       $('#startdate').datepicker('setDate', '01-06-17');
-      $('#enddate').datepicker('setDate', '31-08-18');
+      $('#enddate').datepicker('setDate', endDate);
 
       $('#startdate').datepicker('setStartDate', '01-06-17');
       $('#startdate').datepicker('setEndDate', '31-04-18');
       $('#enddate').datepicker('setStartDate', '01-10-17');
-      $('#enddate').datepicker('setEndDate', '31-08-18');
+      $('#enddate').datepicker('setEndDate', endDate);
 
       $('#startdate').on('pick.datepicker', function (e) {
         var date = $('#startdate').datepicker('getDate', true);
@@ -332,8 +335,8 @@
       $('.reset').click(function() {
         var id = $(this).attr("id");
         if (id === "end") {
-          $('#enddate').datepicker('setDate', '31-08-18');
-          $('#startdate').datepicker('setEndDate', '31-04-18');
+          $('#enddate').datepicker('setDate', dateGlobal);
+          $('#startdate').datepicker('setEndDate', dateGlobal);
         }
         else if (id === "start") {
           $('#startdate').datepicker('setDate', '01-06-17');
