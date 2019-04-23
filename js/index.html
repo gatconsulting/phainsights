@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Insights and Trends | PHA</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,500" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,500" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.25.6/d3-legend.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+    <script src="./GLSlideshow.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <link rel="stylesheet" type="text/css" href="animate.css">
+    <link rel="stylesheet" type="text/css" href="./datepicker/datepicker.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400" rel="stylesheet">
+
+    <link rel="icon" href="./resources/favicon.ico" type="image/x-icon" />
+    <script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"
+    integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
+    crossorigin=""></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
+  integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+  crossorigin=""/>
+  </head>
+
+  <body>
+    <div class="landing">
+      <div class="overlayMenu">
+        <div class="overlayUpHalf" id="topHalfOverlay">
+          <div class="container overlayUpHalfContainer">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+              <div class="overlayLogo">
+                <img id="gatLogoOverlay" src="./resources/gat2.svg"></img>
+                <img id="closeIcon" src="./resources/close.svg"></img>
+              </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 overlayUpHalfMenu" id="overlayUpperHalfMenu">
+              <p id="overlay1" class="overlayMenuText home">Attendance</p>
+              <p id="overlay2" class="overlayMenuText enum">Enumerator Performance</p>
+              <p id="overlay4" class="overlayMenuText conditions">Park Conditions</p>
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 overlayUpHalfMenu" id="overlayBelowHalfMenu">
+            </div>
+          </div>
+        </div>
+        <div class="overlayBottomHalf" id="bottomHalfOverlay">
+          <div class="bottomhalfOverlayTint">
+          </div>
+          <div class="bottomOverlayContact">
+            <div class="container overlayContactContainer">
+              <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 textContact">
+                <p class="companyName" style="margin-bottom: 0.3rem; color: #ECEFF1;">GAT Consulting (Pvt) Ltd.</p>
+                <div class="flexInfo"><i class="fas fa-map-marked-alt flexInfoIcon"></i><p class="noMargin">3-Shahrah-e-Aiwan-e-Tijarat, China Chowk, Lahore</p></div>
+                <div class="flexInfo"><i class="fas fa-phone flexInfoIcon"></i></i><p class="noMargin">+92 42 37500724</p></div>
+                <div class="flexInfo"><i class="fas fa-envelope flexInfoIcon"></i><p class="noMargin">contact@gatconsulting.org</p></div>
+
+                <p class="companyName" style="margin-bottom: 0.3rem; margin-top: 0.5rem; color: #ECEFF1;">Parks & Horticulture Authority Lahore</p>
+                <div class="flexInfo"><i class="fas fa-map-marked-alt flexInfoIcon"></i><p class="noMargin">Gate No-4 Jillani Park, 2 Jail Rd, Lahore</p></div>
+                <div class="flexInfo"><i class="fas fa-phone flexInfoIcon"></i><p class="noMargin">+92 42 99200830 | +92 42 99200908</p></div>
+                <div class="flexInfo"><i class="fas fa-envelope flexInfoIcon"></i><p class="noMargin">contact@pha.gop.com</p></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8 coloredPortion">
+      </div>
+      <div class="container">
+        <div class="row landingRow">
+          <div class="topNav">
+            <div class="gatContain home">
+              <img id="gatLogoOverlay" src="./resources/gat2.svg"></img>
+              <span class="gat">GAT CONSULTING</span>
+            </div>
+            <img id="hamburger" src="./resources/menu.svg"></img>
+            <img id="hamburgerWhite" src="./resources/menuWhite.svg"></img>
+          </div>
+          <div class="imageAlignment">
+            <div class="titleContainer">
+              <div class="insightTitle">
+                <p class="insights">PHA M&E INSIGHTS</p>
+                <p class="years">2017-2018</p>
+              </div>
+              <div class="bannerContain">
+                <h2 class="banner">A visual exploration of trends and results</h2>
+              </div>
+            </div>
+             <div class="imageContainer">
+            <!--  <img class="slideShowImage" src="./resources/pha.jpg"></img> -->
+              <div class="grid__item-img" data-displacement="resources/1.jpg" data-intensity="0.5" data-speedIn="1.0" data-speedOut="1.2">
+                <img class="slideShowImage" src="./resources/pha.jpg" alt="Image"></img>
+                <img class="slideShowImage" src="./resources/pha2.jpg" id="getHeight" alt="Image Alt"></img>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="secondPage">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <h3>Project Background</h3>
+            <p class="lato">On  April 4, 2017, GAT Consulting was awarded the project to monitor the field employees at Parks and Horticulture Authority (PHA), Lahore. The goal of the project was to maximize field staff attendance, to minimize expenditures on inactive employees and to evaluate the general conditions of parks through field surveys. This website will summarize GAT’s monitoring activity between April 2017 and August 2018 through interactive data visualizations.</p>
+            <p class="lato">The goal of the website is to enable GAT monitors to conduct an in-depth analysis on the monitoring data and identify gaps and areas of improvement. The website presents 3 major visualizations presenting over time staff attendance over time, summary of park conditions by zones (administrative divisions devised by PHA) and enumeration activity.</p>
+          </div>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 exploredata">
+            <h3 class="attendanceSec">Explore Attendance</h3>
+            <p class="lato">The visualization that follows summarizes the major attendance statistics over time. The visualization on top shows present and absent rates over time. The monitor can also choose a particular zone or time window to allow for specified/ well defined analysis. </p>
+            <p class="lato">The visualization below on the other hand shows the percentage of various comments (attendances that are neither present or absent are explained through comment by enumerators). The colors of the stacked area chart correspond to the different categories of comments. These categories are listed below: </p>
+            <ul style="list-style-type:none">
+              <li>1. Other (includes Other, Other duty and Driver comments)</li>
+              <li>2. Dormant (Includes Left job, Retired and Death comments)</li>
+              <li>3. Other shifts (Includes night shift, evening shift and transfers comments)</li>
+              <li>4. Leave</li>
+              <li>5. CNIC Mismatch</li>
+            </ul>
+
+            <div class="attendanceInputs">
+              <div class="dropdownZone">
+                <p class="selectedZone" id="select">Zone I selected</p>
+                <div class="dropdown">
+                  <a class="btn btn-secondary dropdown-toggle dropdownMenuLinks" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Zone
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <a class="dropdown-item" value="I">Zone I</a>
+                    <a class="dropdown-item" value="II">Zone II</a>
+                    <a class="dropdown-item" value="III">Zone III</a>
+                    <a class="dropdown-item" value="IV">Zone IV</a>
+                    <a class="dropdown-item" value="V">Zone V</a>
+                    <a class="dropdown-item" value="VI">Zone VI</a>
+                    <a class="dropdown-item" value="VII">Zone VII</a>
+                    <a class="dropdown-item" value-"ENGINEERING DIRECTORATE">Engineering Directorate</a>
+                    <a class="dropdown-item" value="GORs">GORs</a>
+                    <a class="dropdown-item" value="GIP">GIP</a>
+                    <a class="dropdown-item" value="JillaniPark">Jillani Park</a>
+                    <a class="dropdown-item" value="PD FEROZPUR ROAD">Ferozepur Road</a>
+                    <a class="dropdown-item" value="PD MALL RD AND FEROZPUR RD">Mall Road</a>
+                    <a class="dropdown-item" value="PD Ring Road">Ring Road</a>
+                    <a class="dropdown-item" value="PDLBC">PDLBC</a>
+                    <a class="dropdown-item" value="Project Gulshan-e-Iqbal Park">Gulshan-e-Iqbal Park</a>
+                    <a class="dropdown-item" value="PHA Office Staff">PHA Office Staff</a>
+                    <a class="dropdown-item" value="All">All Zones</a>
+                  </div>
+                </div>
+              </div>
+              <div class="datePickers">
+                <div>
+                  <p class="dateHeaders lato">Start Date<img style="width: 13px; margin-left: 5px" class="reset" id="start" src="./resources/undo-arrow.svg"></img></p>
+                  <input id="startdate" data-toggle="datepicker"/>
+                </div>
+                <div>
+                  <p class="dateHeaders lato">End Date<img style="width: 13px; margin-left: 5px" class="reset" id="end" src="./resources/undo-arrow.svg"></img></p>
+                  <input id="enddate" data-toggle="datepicker"/>
+                </div>
+                <div id="dtBox"></div>
+              </div>
+            </div>
+            <div class="monthDisclaimContain">
+              <p id="monthDisclaim" class="lato disclaimerMonthWindow">Note: The minimum date range is 4 months</p>
+            </div>
+            <div class="vizContain">
+              <div class="linechart-contain">
+              </div>
+              <div class="areachart-contain">
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 exploredata">
+            <h3>Weekly Attendance</h3>
+            <div class="weekmap-contain">
+              <div class='map-container'>
+                <div id="map-week"></div>
+                <div id="mapid"></div>
+                <div class ="playback">
+                  <div class="pause-control">
+                    <a id="play"><img src="play.svg"></a>
+                    <a id="pause"><img src="pause.svg"></a>
+                  </div>
+                  <div class="slider-margin">
+                    <div class="slider-area">
+                      <div class="slider-track">
+                        <div class="progress-slider">
+                        </div>
+                        <div class="handle-container">
+                          <div class="handle">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 exploredata">
+            <h3>Explore PHA Data</h3>
+          </div>
+          <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 conditions">
+            <div id="imgNav1" class="imageNav">
+              <img src="./resources/pha3.jpg"></img>
+              <div class="colorOverlay"></div>
+              <p class="titleOverlay">Park Conditions</p>
+            </div>
+          </div>
+          <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 enum">
+            <div id="imgNav2" class="imageNav">
+              <img src="./resources/pha4.jpg"></img>
+              <div class="colorOverlay"></div>
+              <p class="titleOverlay">Enumerator Performance</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+   <footer class="footer">
+     <div class="container" style="position: relative; height: 100%;">
+       <div class="sectionContainer">
+         <div class="col-sm-12 col-md-4 col-lg-6 col-xl-6 footerSection">
+           <img src="./resources/Logogray.svg" style="width: 90px"/>
+           <img src="./resources/pha.svg" style="width: 70px"/>
+         </div>
+         <div class="col-sm-12 col-md-4 col-lg-3 col-xl-3 footerSection paddedFootSection1">
+           <h4 class="foothead">Follow</h4>
+           <div class="footline"></div>
+           <p class="footerlinks">LinkedIn</p>
+           <p class="footerlinks">Twitter</p>
+           <p class="footerlinks">Facebook</p>
+         </div>
+         <div class="col-sm-12 col-md-4 col-lg-3 col-xl-3 footerSection paddedFootSection2">
+           <h4 class="foothead">Navigation</h4>
+           <div class="footline"></div>
+           <p class="footerlinks home">Attendance</p>
+           <p class="footerlinks enum">Enumerator Performance</p>
+           <p class="footerlinks conditions">Park Conditions</p>
+           <p class="footerlinks about">About</p>
+         </div>
+       </div>
+       <div class="toTopButt bottomButtText col-sm-12 col-md-4 col-lg-6 col-xl-6"><p style="margin-bottom: 0px;">To top</p> <i class="far fa-arrow-alt-circle-up marginArrow" style="font-size: 26px;"></i></div>
+       <div class="designedBy bottomButtText col-sm-12 col-md-4 col-lg-6 col-xl-6 "><p  class="marginDesignText" style="margin-bottom: 0px;">Designed and Developed by Plotree Info Design</p><img style="width: 26px;"src="./resources/logoAlone.svg"></img></div>
+    </div>
+    <div class="footerWhite footerButts"></div>
+    <div id="sideBut" class="footerPurple footerButts"></div>
+    <div id="bottomBut" class="footerPurple footerButts"></div>
+   </footer>
+    <script src="./datepicker/datepicker.js"></script>
+
+    <script src="./index.js"></script>
+
+    <script src="phaNewDat.js"></script>
+    <script type="text/javascript">
+      window.dateGlobal = phaDataDash[phaDataDash.length - 1].Date;
+    </script>
+    <!--<script src="js/pha_data.js"></script>-->
+    <script src="js/PHATimeSeries.js"></script>
+    <script src="js/imagesloaded.pkgd.min.js"></script>
+    <script src="js/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js"></script>
+    <script src="js/hover.js"></script>
+
+
+    <script>
+
+      $.fn.datepicker.setDefaults({
+        format: 'dd-mm-yy',
+        monthsShort: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+        autoHide: true
+      });
+      $('[data-toggle="datepicker"]').datepicker();
+
+      var startDate = '01-Jun-17';
+      var endDate = dateGlobal;
+      var phaZone = "I";
+
+      makeChart(phaMasterData, phaZone, [startDate, endDate]);
+
+      $('#startdate').datepicker('setDate', '01-06-17');
+      $('#enddate').datepicker('setDate', endDate);
+
+      $('#startdate').datepicker('setStartDate', '01-06-17');
+      $('#startdate').datepicker('setEndDate', '31-12-18');
+      $('#enddate').datepicker('setStartDate', '01-10-17');
+      $('#enddate').datepicker('setEndDate', endDate);
+
+      $('#startdate').on('pick.datepicker', function (e) {
+        var date = $('#startdate').datepicker('getDate', true);
+        var split = date.split('-');
+        var monthname = $("#startdate").datepicker('getMonthName', true);
+        split[1] = monthname;
+        startDate = split[0] + "-" + split[1] + "-" + split[2];
+
+        var newEndStartDate = new Date(startDate);
+        newEndStartDate.setMonth(newEndStartDate.getMonth()+4);
+        newEndStartDate = newEndStartDate.getDate().toString() + "-" + (newEndStartDate.getMonth() + 1).toString().padStart(2, '0') + "-" + (newEndStartDate.getFullYear() % 100).toString();
+        $('#enddate').datepicker('setStartDate', newEndStartDate);
+
+        makeChart(phaMasterData, phaZone, [startDate, endDate]);
+      });
+
+      $('#enddate').on('pick.datepicker', function (e) {
+        var date = $('#enddate').datepicker('getDate', true);
+        var split = date.split('-');
+        var monthname = $("#enddate").datepicker('getMonthName', true);
+        split[1] = monthname;
+        endDate = split[0] + "-" + split[1] + "-" + split[2];
+
+        var newStartEndDate = new Date(endDate);
+        newStartEndDate.setMonth(newStartEndDate.getMonth()-4);
+        newStartEndDate = newStartEndDate.getDate().toString() + "-" + (newStartEndDate.getMonth() + 1).toString().padStart(2, '0') + "-" + (newStartEndDate.getFullYear() % 100).toString();
+        $('#startdate').datepicker('setEndDate', newStartEndDate);
+
+        makeChart(phaMasterData, phaZone, [startDate, endDate]);
+      });
+
+
+
+      $('.dropdown-item').click(function() {
+        var value = $(this).text();
+        var phaVal = $(this).attr("value");
+        $('#select').text(value + ' selected');
+        var phaZone = phaVal;
+        //makeChart(phaMasterData, phaZone, [startDate, endDate]);
+        updateCharts(phaZone);
+      });
+
+
+      $('.reset').click(function() {
+        var id = $(this).attr("id");
+        if (id === "end") {
+          $('#enddate').datepicker('setDate', dateGlobal);
+          $('#startdate').datepicker('setEndDate', dateGlobal);
+        }
+        else if (id === "start") {
+          $('#startdate').datepicker('setDate', '01-06-17');
+          $('#enddate').datepicker('setStartDate', '01-10-17');
+        }
+      });
+
+
+    /*  $(window).on('load', function() {
+        makeChart();
+      }); */
+
+      function createGLEffect() {
+        imagesLoaded( document.querySelectorAll('img'), () => {
+          document.body.classList.remove('loading');
+        });
+
+        Array.from(document.querySelectorAll('.grid__item-img')).forEach((el) => {
+          const imgs = Array.from(el.querySelectorAll('img'));
+          console.log(imgs);
+          new hoverEffect({
+            parent: el,
+            intensity: el.dataset.intensity || undefined,
+            speedIn: el.dataset.speedin || undefined,
+            speedOut: el.dataset.speedout || undefined,
+            easing: el.dataset.easing || undefined,
+            hover: el.dataset.hover || undefined,
+            image1: imgs[0].getAttribute('src'),
+            image2: imgs[1].getAttribute('src'),
+            displacementImage: el.dataset.displacement
+          });
+        });
+      }
+      createGLEffect();
+    </script>
+    <script src="js/map.js"></script>
+
+  </body>
+</html>
